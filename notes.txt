@@ -1,0 +1,200 @@
+                    --Database--
+Database is collection of data in a format that can be easily accessed by the application. It contains tables, views and other objects like stored procedures etc..
+
+
+                    --DBMS--
+Database Management System is a software application used to manage our Database is called DBMS
+--> SQL used to interacts with Database.
+--> MySQL, Oracle, PostgreSQL are some of the popular database management systems.
+--> We can use any one of these system for creating and managing databases.
+
+
+                    --Types of Database--
+1- Relational
+    A relational database is a type of database that stored data in the table format. 
+# What is RDBMS?
+    RDBMS stands for Relational DataBase Management System which is an acronym for Relational Database Management Software. It was developed by IBM
+# Example of relational database-
+    MySQL, Microsoft SQL-Server, Oracle, PostgreSQL
+
+2- Non-Relational (NoSQL)
+    Non-relational or NoSQL database does not follow the traditional row/column model but it  stores data in documents like JSON, XML etc.
+# Example of Non-Relational database-
+    MongoDB
+
+
+                    -- What is SQL--
+SQL is a programming language used to interact with relational databases.
+--> It's also known as Structured Query Language or Standard Query Language
+# It is used to perform CRUD operation
+1- Create - INSERT INTO TABLE_NAME VALUES(VALUES);
+2- Read - SELECT * FROM TABLE;
+3- Update - UPDATE TABLE SET COLUMN = VALUE WHERE CONDITION;
+4- Delete - DELETE FROM TABLE WHERE CONDITION;
+
+
+                    -- DataBase Structured--
+A structured database has tables which have columns and Rows
+--> Tables contain records/rows
+--> Columns contains fields/columns
+--> Rows represent individual entries
+--> Fields represents each column entry
+# column --> structured/schema(Design)
+# row    --> unstructured/individual data(Data)
+
+
+                    -- Creating our First Database--
+We will be using MySQL workbench to create our first database. --> inside index.sql file
+# Open MySQL WorkBench
+
+--> to create new database
+    CREATE DATABASE databaseName;
+    CREATE DATABASE databaseName;
+
+--> to delete database
+    DROP DATABASE databaseName;
+
+--> to use database
+    USE databaseName;
+
+--> to create table
+CREATE TABLE databaseName (
+    column_name1 datatype constraint,
+    column_name2 datatype constraint,
+    column_name3 datatype constraint
+);
+
+
+                    -- SQL datatype--
+--> Link- https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+--> Inside the SQL notes by apna college pdf(PageNo. 2)
+--> Numeric Types:
+INT     -> Integer
+TINYINT -> Tiny integer
+SMALLINT-> Small integer
+MEDIUMIN-> Medium integer
+BIGINT  -> Big integer
+FLOAT   -> Floating point number
+DOUBLE  -> Double precision floating point number
+DECIMAL -> Exact numeric of selected length and scale
+BIT     -> Bit field type
+BOOLEAN -> Logical Boolean Type
+DATE    -> Date only value in YYYYMMDD format
+TIME    -> Time only value HHMMSS or HHHHMMSS
+DATETIME-> Date and time combination
+YEAR    -> Years since 1970
+CHAR    -> Fixed character string with a maximum length specified when created
+VARCHAR -> Variable character strings up to a maximum length defined at creation
+BINARY  -> Binary values up to a maximum length set on creation
+VARBINARY-> Variable binary values up to max size set during creation
+BLOB    -> Unlimited length binary object
+TEXT    -> Text objects limited to one gigabyte
+
+--> optional to read
+ENUM    -> A list of predefined enumerated values
+SET     -> A list of predefined mutually exclusive options
+JSON    -> JSON is an open standard for storing and transporting structured data
+UUID    -> Universally unique identifier
+GEOMETRY-> Spatial Data types
+POINT   -> Point geometry
+LINESTRING-> LineString Geometry
+POLYGON -> Polygon Geometry
+MULTI POINT-> MultiPoint Geometry
+MULTI LINE STRING-> MultiLine String Geometry
+MULTI POLYGON-> MultiPolygon Geometry
+GEOMETRYCOLLECTION-> Collection of geometries
+# etc...
+
+# Signed & Unsigned
+UNSIGNED INT -> Positive whole numbers without negative sign (+ve integers).
+SIGNED INT -> Whole numbers can be positive(+), zero(0) ,negative(-) (-ve integers.)
+
+# Constraints
+NOT NULL -> The NOT NULL keyword indicates that this column cannot contain null (blank) values. If you try to insert a blank into such a column
+NOT NULL - Values cannot be null (default)
+NULLABLE - Value may contain Null, but it's not mandatory.
+DEFAULT 'value' - Default value if no other value provided.(can also use CURRENT_TIMESTAMP)
+PRIMARY KEY - Unique key that identifies each row uniquely within its table.
+UNIQUE INDEX - Similar to Primary Key except multiple rows are allowed to have same index value.
+FOREIGN KEY - Used to link two tables together using primary keys from another table as reference.
+CHECK('condition')- Ensures column contains valid values based upon condition given inside parentheses.
+AUTO INCREMENT - Increments the value by +1 everytime new record inserted into database.
+ON UPDATE CURRENT TIMESTAMP - Updates timestamp whenever any change made to existing records.
+REFERENCES TableName(column name)- References another columns value stored in different table.
+COMMENT - Adds comment to specific column/table.
+COLLATE utf8mb4_unicode_ci - Sets collation order for all characters in this column.
+
+# Indexes
+CREATE UNIQUE INDEX IndexName ON tableName(columnName); # Creates unique index on columnName
+DROP INDEX IndexName; # Drops index named "IndexName"
+SHOW INDEX FROM tableName;# Shows indexes present in current database
+ALTER TABLE tblname ADD PRIMARY KEY (id); # Add primary key constraint to id column
+ALTER TABLE tblname DROP PRIMARY KEY ; # Drop primary key constraint
+ALTER TABLE tblname MODIFY COLUMN col VARCHAR(256); # Modify Column type
+
+
+                    -- Types of SQL Commands--
+# DDL
+    Data Definition Language commands: CREATE, ALTER, DROP, TRUNCATE, RENAME
+# DQL
+    Data Query Language command : SELECT
+# DML
+    Data Manipulation Language Command : INSERT INTO, DELETE FROM, UPDATE
+# DCL
+    Data Control Language Command : GRANT, REVOKE
+# TCL
+    Transaction Control Language Command : COMMIT,ROLLBACK
+
+
+                    -- DataBase related Queries--
+# Create Database
+    create database databaseName;
+    create database if not exists databaseName;
+
+# Drop Database
+    drop database databaseName;
+    drop database if exists databaseName;
+
+# show/seen database or table
+    show databases;
+    show tables;
+    
+# Show All databases
+    show databases;
+
+
+                    -- Table related Queries--
+# Creating a New Table
+create table tablename (
+    col1 datatype constraint,
+    col2 dataType condition
+);
+
+# Insert values in to table
+    insert into tablename value ('value', 'value');
+    insert into tablename (column1, column2) value ('column1_value1', 'column2_value1'), ('column1_value2', 'column2_value2');
+    insert into tablename select * from anotherTable where ...;
+    
+# select and view all columns
+    select * from tablename;
+    show columns from tablename;
+
+*# Update Values In A Table
+    update tablename set name = '<NAME>' where age > 30 and gender='male';
+    
+*# Delete Rows From Tables
+    delete from tablename where ......;
+
+
+                    -- Keys --
+# Primary key
+    It is a column (or set of columns) in a table that uniquely identifies each row. (a unique id) There is only 1 PK & it should be NOT null.
+    Primary Key is used for uniquely identifying each row of data. It can be created by using the primary keyword while creating an attribute:
+
+# Foreign Key
+    A foreign key is a column (or set of columns) in a table that refers to the primary key in another table.
+    There can be multiple Foreign Key.
+    Foreign Key can have duplicate & null values.
+    * More info-> SQL slide page No 16 and 17.
+
+                    -- Constraints --
